@@ -1,0 +1,112 @@
+/// \mainpage
+///
+/// Introduction
+/// ------------
+///
+/// I found a couple of hand-draw optical illusions on the internet and was
+/// drawn to the question of whether the illusions would still work if
+/// the images were drawn by a computer, which might be so precise as to
+/// spoil the illusion. Take a look at the original images below and see if
+/// you can write code to generate them before looking at my code.
+/// If you can't see the optical illusions yourself, try right-clicking on each
+/// image and select either Open or Save to see the full-sized version.
+///
+/// The output format that I chose is
+/// Scalable Vector Graphics, abbreviated SVG format (see, for example,
+/// <a href=https://en.wikipedia.org/wiki/Scalable_Vector_Graphics>SVG at
+/// Wikipedia</a>) because it is a simple XML based format that can be
+/// edited in a text editor and viewed in almost any web browser.
+/// You can use your own choice of file format of course, but it will be
+/// easier if you choose a vector graphics file format or a graphics library
+/// that includes functions for drawing and transforming geometric shapes. 
+///
+/// Optical Illusion 1
+/// ------------------
+///
+/// This is the original, hand-drawn image from the internet.
+///
+/// \image html original1.png height=500
+/// 
+/// My code creates the following image.
+///
+/// \image html output1.svg height=500
+///
+/// The optical illusion works even in color. 
+/// Any dark enough color can be used instead of black,
+/// any light enough color can be used instead of white, and any mid-range color
+/// can be used for the background.
+///
+/// \image html output1a.svg height=500
+///
+/// ### My Solution
+///
+/// The image consists of four concentric circles made up of
+/// an even number of squares alternating between black and white and
+/// tilted slightly from the perpendicular to a line drawn
+/// from the center of the circle to the center of the square. 
+/// The exact number of squares per circle does not seem to matter as long
+/// as there are an even number of them and they are spaced uniformly and
+/// fairly closely around the circle.
+/// The following image shows one of the circles of squares. 
+///
+/// \image html OneRingOfSquares.svg height=240
+///
+/// If the radius of the circle
+/// is `r`, the width of the squares is `sw`, and the squares are placed
+/// half a width apart, then the number of squares `n` per ring can be
+/// calculated as follows:
+///
+///    const size_t n = (size_t)ceil((2*PI*r)/(1.5f*sw)) & 0xFFFFFFFE;
+///
+/// From there it is just a matter of drawing four copies at equally spaced radiuses.
+/// See OpticalIllusion1() for more details.
+///
+/// Optical Illusion 2
+/// ------------------
+///
+/// This is the original, hand-drawn image from the internet.
+///
+/// \image html original2.png height=500
+///
+/// My solution generates the following image.
+///
+/// \image html output2.svg height=500
+///
+/// Once again, any dark enough color can be used instead of black,
+/// any light enough color can be used instead of white, and any mid-range color
+/// can be used for the background.
+///
+/// \image html output2a.svg height=500
+///
+/// ### My Solution
+///
+/// The image consists of a pair of concentric rings, each of which is made up of
+/// three concentric circles of ellipses that touch at the edges. Each ellipse is
+/// oriented so that its long axis is perpendicular to a line drawn
+/// from the center of the circles to the center of the ellipse. The following
+/// image shows one of the rings.
+///
+/// \image html braid.svg height=250
+///
+/// The inner circle of a ring starts with a black ellipse centered at the
+/// top of the ring and alternates with white
+/// ellipses each spaced roughly one ellipse long-axis apart for a total of 36
+/// ellipses as shown in the next image.
+///
+/// \image html ring1-middle.svg height=250
+///
+/// The inner circle of a ring also has 36 ellipses, but it starts with a gap centered
+/// at the top with black ellipses to the left and right and a gap
+/// centered at the bottom with white ellipses to the left and right.
+/// Black and white alternate for the rest of the circle.
+///
+/// \image html ring2-inner.svg height=250
+///
+/// The outer circle of a ring is similar to the inner circle
+/// but has black and white interchanged.
+///
+/// \image html ring3-outer.svg height=250
+///
+/// From there it is just a matter of drawing a second ring with a smaller radius.
+/// See OpticalIllusion2() for more details.
+ 

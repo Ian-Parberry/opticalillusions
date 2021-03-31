@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+<!-- Created by Ian Parberry -->
+<style>rect{fill:none;stroke-width:3}rect.b{x:188;y:188;stroke:black;}rect.w{x:188;y:188;stroke:white;}</style>
+<rect width="400" height="400" style="fill:gray"/>
+<g transform="translate(112.0 12.0)rotate(-12.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(106.0 46.2)rotate(8.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(88.6 76.3)rotate(28.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(62.0 98.6)rotate(48.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(29.4 110.5)rotate(68.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(-5.4 110.5)rotate(88.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(-38.0 98.6)rotate(108.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(-64.6 76.3)rotate(128.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(-82.0 46.2)rotate(148.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(-88.0 12.0)rotate(168.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(-82.0 -22.2)rotate(188.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(-64.6 -52.3)rotate(208.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(-38.0 -74.6)rotate(228.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(-5.4 -86.5)rotate(248.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(29.4 -86.5)rotate(268.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(62.0 -74.6)rotate(288.0 188 188)"><rect width="24" height="24" class="b"/></g>
+<g transform="translate(88.6 -52.3)rotate(308.0 188 188)"><rect width="24" height="24" class="w"/></g>
+<g transform="translate(106.0 -22.2)rotate(328.0 188 188)"><rect width="24" height="24" class="b"/></g>
+</svg>
