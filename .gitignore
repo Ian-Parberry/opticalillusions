@@ -1,6 +1,5 @@
 desktop.ini
 [Dd]oxygen/html/
-.editorconfig
 SavedImages/
 
 ## Ignore Visual Studio temporary files, build results, and
@@ -11,7 +10,7 @@ SavedImages/
 # User-specific files
 *.rsuser
 *.suo
-*.user
+#*.user
 *.userosscache
 *.sln.docstates
 
