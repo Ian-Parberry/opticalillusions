@@ -59,8 +59,8 @@ bool OpenSVG(FILE*& output, const std::string& fname, size_t w, size_t h){
   if(output != nullptr){ //write header to file
     fprintf(output, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); //xml tag
 
-    fprintf(output, "<svg width=\"%lu\" height=\"%lu\" ", w, w); //svg tag
-    fprintf(output, "viewBox=\"0 0 %lu %lu\" ", w, w);
+    fprintf(output, "<svg width=\"%zu\" height=\"%zu\" ", w, w); //svg tag
+    fprintf(output, "viewBox=\"0 0 %zu %zu\" ", w, w);
     fprintf(output, "xmlns=\"http://www.w3.org/2000/svg\">\n");
     
     fprintf(output, "<!-- Created by Ian Parberry -->\n"); //author comment
@@ -124,9 +124,9 @@ void DrawCircleOfSquares(FILE* output, size_t cx, size_t cy, float r,
     const float y = r*sinf(theta); //square center y
     const float phi = 12*(parity? 1: -1) + 180*theta/PI; //square orientation
 
-    fprintf(output, "<g transform=\"translate(%0.1f %0.1f)", x + sw/2, y + sw/2); //translate
-    fprintf(output, "rotate(%0.1f %lu %lu)\">", phi, cx, cy); //rotate
-    fprintf(output, "<rect width=\"%lu\" height=\"%lu\" ", sw, sw); //rectangle
+    fprintf(output, "<g transform=\"translate(%0.1f %0.1f)", x + sw/2.0f, y + sw/2.0f); //translate
+    fprintf(output, "rotate(%0.1f %zu %zu)\">", phi, cx, cy); //rotate
+    fprintf(output, "<rect width=\"%zu\" height=\"%zu\" ", sw, sw); //rectangle
 
     if(i&1)fprintf(output, "class=\"b\""); //black
     else fprintf(output, "class=\"w\""); //white
@@ -167,15 +167,17 @@ void OpticalIllusion1(const std::string& fname, size_t w, size_t n,
   FILE* output = nullptr; //output file pointer
 
   if(OpenSVG(output, fname, w, w)){
+    printf("Optical illusion 1 to %s.svg\n", fname.c_str());
+
     //style tag
     fprintf(output, "<style>"); //open style tag
     fprintf(output, "rect{fill:none;stroke-width:3}"); //rectangle
-    fprintf(output, "rect.b{x:%lu;y:%lu;stroke:%s;}", cx, cy, dark); //black rect
-    fprintf(output, "rect.w{x:%lu;y:%lu;stroke:%s;}", cx, cy, light); //white rect
+    fprintf(output, "rect.b{x:%zu;y:%zu;stroke:%s;}", cx, cy, dark); //black rect
+    fprintf(output, "rect.w{x:%zu;y:%zu;stroke:%s;}", cx, cy, light); //white rect
     fprintf(output, "</style>\n"); //close style tag
     
     //background
-    fprintf(output, "<rect width=\"%lu\" height=\"%lu\" ", w, w); //rectangle
+    fprintf(output, "<rect width=\"%zu\" height=\"%zu\" ", w, w); //rectangle
     fprintf(output, "style=\"fill:%s\"/>\n", bgclr); //fill
   
     for(size_t i=0; i<n; i++) //for each circle of squares
@@ -241,7 +243,7 @@ void DrawCircleOfEllipses(FILE* output, size_t cx, size_t cy, float r,
     const float phi = 90 + 180*theta/PI; //ellipse orientation
 
     fprintf(output, "<g transform=\"translate(%0.1f %0.1f)", x, y); //translate
-    fprintf(output, "rotate(%0.1f %lu %lu)\">", phi, cx, cy); //rotate
+    fprintf(output, "rotate(%0.1f %zu %zu)\">", phi, cx, cy); //rotate
     fprintf(output, "<ellipse rx=\"%0.1f\" ry=\"%0.1f\" ", r0, r1); //ellipse
     
     SelectEllipseColor(output, i, parity);
@@ -333,17 +335,19 @@ void OpticalIllusion2(const std::string& fname, size_t w, size_t n,
   FILE* output = nullptr; //output file pointer
 
   if(OpenSVG(output, fname, w, w)){
+    printf("Optical illusion 2 to %s.svg\n", fname.c_str());
+
     //style tag
     fprintf(output, "<style>"); //open style tag
     fprintf(output, "ellipse{fill:none;stroke-width:3}");	//ellipse
-    fprintf(output, "ellipse.b{cx:%lu;cy:%lu;stroke:none;fill:%s;}",
+    fprintf(output, "ellipse.b{cx:%zu;cy:%zu;stroke:none;fill:%s;}",
       cx, cy, dark);	//dark ellipse
-    fprintf(output, "ellipse.w{cx:%lu;cy:%lu;stroke:none;fill:%s;}",
+    fprintf(output, "ellipse.w{cx:%zu;cy:%zu;stroke:none;fill:%s;}",
       cx, cy, light);	//light ellipse
     fprintf(output, "</style>\n"); //close style tag
     
     //background
-    fprintf(output, "<rect width=\"%lu\" height=\"%lu\" ", w, w); //rectangle
+    fprintf(output, "<rect width=\"%zu\" height=\"%zu\" ", w, w); //rectangle
     fprintf(output, "style=\"fill:%s\"/>\n", bgclr); //fill
   
     DrawTripleCircle(output, cx, cy, r, r0, r1, 36);
